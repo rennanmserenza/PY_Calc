@@ -4,19 +4,15 @@ from typing import List
 class Calculadora():
     
     def __init__(
-        self, root: tk.Tk 
-        # label: tk.Label, display: tk.Entry, 
+        self, root: tk.Tk, display: tk.Entry
+        # label: tk.Label, 
         # buttons: List[List[tk.Button]]
         ):
-        """[summary]
-
-        Args:
-            root (tk.Tk): [description]
-        """
+        
 
         self.root = root
         # self.label = label
-        # self.display = display
+        self.display = display
         # self.buttons = buttons
 
     
@@ -30,5 +26,5 @@ class Calculadora():
 
     def start(self):
         # self._config_buttons()
-        # self._config_display()
+        self._config_display()
         self.root.mainloop()
