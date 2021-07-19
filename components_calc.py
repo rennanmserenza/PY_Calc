@@ -7,13 +7,12 @@ def make_root() -> tk.Tk:
     """Função que cria nossa GUI
 
     Returns:
-        tk.Tk: retorno da nossa tela com as configurações que aplicamos, a saída é verificada para  
-               ser igual a tk.Tk
+        tk.Tk: retorno da nossa tela com as configurações que aplicamos, a saída é verificada para ser igual a tk.Tk
     """
 
     root = tk.Tk()                              # define a variável root como sendo nossa tela
     
-    root.title('Py_Tk_Calculadora')             # definimos o nome da nossa janela
+    root.title('Py_Calc')             # definimos o nome da nossa janela
     
     root.resizable(False, False)                # definimos que nossa janela não terá tamanho
                                                 # regulável pelo usuário, o primeiro argumento
@@ -26,17 +25,6 @@ def make_root() -> tk.Tk:
     return root                                         # retorno da nossa função sendo root -> tk.Tk
                                                         # e suas configurações
                                                         
-
-
-# def make_label(root) -> tk.Label:
-#     label = tk.Label(
-#         root, text='Sem conta ainda',
-#         anchor='e', justify='right', background='#fff'
-#     )
-#     label.grid(row=0, column=0, columnspan=5, sticky="news")
-
-#     return label
-
 
 def display_control_a(event):                           # função de evento de click
     event.widget.select_range(0, 'end')
@@ -57,7 +45,7 @@ def make_display(root) -> tk.Entry:
     display = tk.Entry(root)                            # define display como portador da entrada
                                                         # é um input
 
-    display.grid(row=1, column=0, 
+    display.grid(row=0, column=0, 
     columnspan=5, sticky="news", pady=(0, 10))          # define o grid do display, começando na
                                                         # primeira linha ocupando a coluna 0
                                                         # e se expandindo por todas as colunas
@@ -81,6 +69,34 @@ def make_display(root) -> tk.Entry:
                                                         # evento a uma função, neste caso o click do mouse
 
     return display                                      # retorno da função tk.Entry, configurado
+
+
+def make_label(root) -> tk.Label:
+    """Cria um espaço que será usado para exibir nossos resultado e contas
+    Args:
+        root : Nossa tela de exibição do tkinter
+
+    Returns:
+        tk.Label: Retorna tk.Label como sendo nossa label configurada e pronta para uso
+    """
+    label = tk.Label(
+        root, text='Sem conta ainda', anchor='e',
+         justify='right', background='#fff'
+    )                                                   # função label, cria um espaço na nossa root
+                                                        # onde ficarão nossos resultados de conta
+                                                        # text define um texto de exibição na label,
+                                                        # anchor='e' define o label como alinhado a direita
+                                                        # justify ='right' define o alinhamento do texto a direita
+                                                        # background='#fff' define como a cor de fundo sem branca
+    
+    label.grid(
+        row=1, column=0, 
+        columnspan=5, sticky="news"
+    )                                                   # define o grid da label, linha 1, column 0
+                                                        # columnspan recebe 5 espaços de coluna
+                                                        # sticky define que ele irá preencher todos os espaços em todas as direções
+
+    return label
 
 
 # def make_buttons(root) -> List[List[tk.Button]]:

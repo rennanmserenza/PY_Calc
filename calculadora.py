@@ -7,11 +7,14 @@ def main():
     
     display = make_display(root)        # atribui a váriavel display a função make_display 
                                         # que recebe root como argumento
-    # label = make_label(root)
+
+    label = make_label(root)            # define a variavel label com a função make_label
+                                        # esta função recbe root como argumento
+
     # buttons = make_buttons(root)
 
-    calculadora = Calculadora(root, display)
-    #  label, display, buttons)
+    calculadora = Calculadora(root, display, label)
+    #  buttons)
     calculadora.start()
 
 
