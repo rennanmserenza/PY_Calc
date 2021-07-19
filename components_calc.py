@@ -10,14 +10,14 @@ def make_root() -> tk.Tk:
         tk.Tk: retorno da nossa tela com as configurações que aplicamos, a saída é verificada para ser igual a tk.Tk
     """
 
-    root = tk.Tk()                              # define a variável root como sendo nossa tela
+    root = tk.Tk()                                      # define a variável root como sendo nossa tela
     
-    root.title('Py_Calc')             # definimos o nome da nossa janela
+    root.title('Py_Calc')                               # definimos o nome da nossa janela
     
-    root.resizable(False, False)                # definimos que nossa janela não terá tamanho
-                                                # regulável pelo usuário, o primeiro argumento
-                                                # se refere ao ajuste de largura, o segundo se
-                                                # refere ao ajuste de altura
+    root.resizable(False, False)                        # definimos que nossa janela não terá tamanho
+                                                        # regulável pelo usuário, o primeiro argumento
+                                                        # se refere ao ajuste de largura, o segundo se
+                                                        # refere ao ajuste de altura
     
     root.config(padx=10, pady=10, background='#fff')    # define as configurações de estilo
                                                         # da nossa janela    
@@ -99,30 +99,53 @@ def make_label(root) -> tk.Label:
     return label
 
 
-# def make_buttons(root) -> List[List[tk.Button]]:
-#     button_texts: List[List[str]] = [
-#         ['7', '8', '9', '+', 'C'],
-#         ['4', '5', '6', '-', '/'],
-#         ['1', '2', '3', '*', '^'],
-#         ['0', '.', '(', ')', '='],
-#     ]
+def make_buttons(root) -> List[List[tk.Button]]:
+    """Função para gerar nossos botões da calculadora
 
-#     buttons: List[List[tk.Button]] = []
+    Args:
+        root : nossa tela com todos os elementos postos nela até o momento
 
-#     for row_index, row_value in enumerate(button_texts, start=2):
-#         button_row = []
-#         for collum_index, collum_value in enumerate(row_value):
-#             btn = tk.Button(root, text=collum_value)
-#             btn.grid(row=row_index, column=collum_index, sticky='news', padx=5, pady=5)
+    Returns:
+        buttons -> List[List[tk.Button]]: Retorna botões com seus valores definidos em uma lista.
+    """
+    button_texts: List[List[str]] = [
+        ['7', '8', '9', '+', 'C'],
+        ['4', '5', '6', '-', '/'],
+        ['1', '2', '3', '*', '^'],
+        ['0', '.', '(', ')', '=']
+    ]                                                   # button_texts é um mapa de botão que usaremos a seguir
+                                                        # button_texts é uma váriavel que armazena strings
+                                                        # dentro de listas, dentro de uma lista principal
 
-#             btn.config(font=('Helvetica', 15, 'normal'),
-#                 pady=40, width=1, background='#d1e2f3', border=0,
-#                 cursor='hand2', highlightthickness=0, highlightcolor='#ccc',
-#                 highlightbackground='#ccc', activebackground='#ccc'
-#             )
+    buttons: List[List[tk.Button]] = []                 # variável buttons, é uma lista com listas de botão do tipo
+                                                        # tk.Button, e ela armazenará nossos valores de botões
 
-#             button_row.append(btn)
+    for r_index, r_value in enumerate(button_texts, start=2):
+        button_row = []                                 # variável tipo lista para armazenar botão de cada linha
+                                                        # variável é sempre limpa quando inicia-se uma nova linha
+
+        for c_index, c_value in enumerate(r_value):
+            btn = tk.Button(root, text=c_value)         # gera um botão com o valor contido na posição correspondente
+                                                        # na matriz button_texts
+            btn.grid(row=r_index, column=c_index,
+             sticky='news', padx=5, pady=5)             # define o grid do botão tendo como base o indice da lista e
+                                                        # o indice do texto presente na lista para posiciona-lo
+                                                        # sticky define o batão sendo expandido para todos lados igualmente
+                                                        # com padding de 5px na vertical e na horizontal
+
+            btn.config(font=('Helvetica', 15, 'normal'),
+                pady=40, width=1, background='#f1f2f3', border=0,
+                cursor='hand2', highlightthickness=0, highlightcolor='#ccc',
+                highlightbackground='#ccc', activebackground='#ccc'
+            )                                           # configura os estilos dos botões, font Helvetica, 15px, normal(sem negrito)
+                                                        # define um padding de 40px na vertical, todos com msm width, e cor de fundo
+                                                        # sendo f1f2f3, sem bordas, tipo de cursor sendo hand 2, activebackgroun
+                                                        # refere-se a cor de fundo ao ser clicado o botão.
+
+            button_row.append(btn)                      # envia nosso botão para a lista button_row
         
-#         buttons.append(button_row)
+        buttons.append(button_row)                      # ao final de cada listagem da nossa button_row enviamos essa lista para nossa
+                                                        # lista de botões que é uma matriz declarada antes do nosso FOR
 
-#     return buttons
+    return buttons                                      # retorna buttons sendo uma lista com strings dentro de uma lista
+                                                        # configurado como decidido

@@ -5,16 +5,14 @@ class Calculadora():
     
     def __init__(
         self, root: tk.Tk, display: tk.Entry,
-        label: tk.Label
-        # buttons: List[List[tk.Button]]
+        label: tk.Label, buttons: List[List[tk.Button]]
         ):
         
 
         self.root = root
         self.display = display
         self.label = label
-
-        # self.buttons = buttons
+        self.buttons = buttons
 
     
     # def _config_buttons(self):
