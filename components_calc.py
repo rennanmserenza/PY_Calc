@@ -28,7 +28,7 @@ def make_root() -> tk.Tk:
 
 def display_control_a(event):                           # função de evento de click
     event.widget.select_range(0, 'end')
-    event.widget.incursor('end')
+    event.widget.icursor('end')
     
     return 'break'
 
